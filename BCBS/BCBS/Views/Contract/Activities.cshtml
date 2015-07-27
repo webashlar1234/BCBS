@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Activities";
+    long contractid = 0;
+    if (ViewBag.ContractId != null)
+    {
+        contractid = ViewBag.ContractId;
+    }
+}
+
+<link href="~/Content/kendo/2013.2.716/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2013.2.716/kendo.default.min.css" rel="stylesheet" />
+<script src="~/Scripts/kendo.all.min.js"></script>
+<script src="~/Scripts/JS/ActivityIndex.js"></script>
+@Html.Hidden("ContractId", contractid)
+<div class="row" style="margin-left: 0px; margin-right: 0px;">
+    <input class="pull-right" type="text" id="SearchActivity" placeholder="Serach by contract code" />
+    <span class="btn btn-primary noRadius" id="addactivity" style="display: none">Add Activity
+    </span>
+    <span class="btn btn-primary noRadius" id="editactivity" style="display: none">Edit Activity
+    </span>
+    <span class="btn btn-primary noRadius" id="deleteactivity" style="display: none" data-toggle="modal" data-target="#myModal">Delete
+    </span>
+</div>
+<div class="modal fade noRadius" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content noRadius">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure want to delete this Activity?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="" class="btn btn-default noRadius" data-dismiss="modal">No</button>
+                <button type="button" id="btnconfirmdelete" class="btn btn-primary noRadius">Yes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<div id="ActivityGrid" class="k-grid k-widget k-secondary gridDiv" data-role="grid"></div>

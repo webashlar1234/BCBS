@@ -1,0 +1,158 @@
+﻿@model BCBS.Models.ServiceModel
+
+@{
+    ViewBag.Title = "New";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/JS/ServiceDetail.js"></script>
+    <fieldset>
+        <legend>New Service Type</legend>
+        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, new { @class = "control-label noRadius" })
+                    @Html.DropDownListFor(model => model.Status, new List<SelectListItem>{
+                    new SelectListItem{ Text="Active", Value = "Active" },
+                    new SelectListItem{ Text="Suspended", Value = "Suspended" },
+                    new SelectListItem{ Text="Removed", Value = "Removed" },
+                 }, "--Select Status--", new { @class = "form-control noRadius", @required = "required" })
+                    @*@Html.ValidationMessageFor(model => model.Status)*@
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectId, new { @class = "control-label noRadius" })
+                    @Html.DropDownListFor(model => model.ProjectId, new SelectList(ViewBag.Projects, "Id", "Name"), "N/A", new { @class = "form-control noRadius" })
+
+                    @*@Html.ValidationMessageFor(model => model.Status)*@
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label noRadius" })
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control noRadius", @required = "required" })
+                    @*@Html.ValidationMessageFor(model => model.Name)*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-group">
+                    @Html.HiddenFor(model => model.FeesType)
+                    <label class="control-label noRadius" for="Name">Fees Types</label>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="col-lg-4 col-md-4">
+                            <label class="col-lg-12 checkbox chkFeesType" for="chkOnceOnly">
+                                <input type="checkbox" name="chkOnceOnly" id="chkOnceOnly" value="OnceOnly">
+                                Once Only
+                            </label>
+                            <div class="col-lg-12 onceonlydiv" style="display:none">
+                                <label class="control-label">Amount ($)</label>
+                                <input class="feesAmount" onkeypress="return isNumber(event)"  type="text" name="OnceOnly" id="OnceOnly" value="" required="required">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <label class="col-lg-12 checkbox chkFeesType" for="chkMonthly">
+                                <input type="checkbox" name="chkMonthly" id="chkMonthly" value="Monthly">
+                                Monthly
+                            </label>
+                            <div class="col-lg-12 monthlydiv"  style="display:none">
+                                <label class="control-label">Amount ($)</label>
+                                <input class="feesAmount" onkeypress="return isNumber(event)" type="text" name="Monthly" id="Monthly" value="" required="required">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <label class="col-lg-12 checkbox chkFeesType" for="chkTransaction">
+                                <input type="checkbox" name="chkTransaction" id="chkTransaction" value="Transaction">
+                                Transaction
+                            </label>
+                            <div class="col-lg-12 transactiondiv"  style="display:none">
+                                <label class="control-label">Rate/Transaction ($)</label>
+                                <input class="feesAmount" onkeypress="return isNumber(event)" type="text" name="Transaction" id="Transaction" value="" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 padd-top-10">
+                        <div class="col-lg-4 col-md-4">
+                            <label class=" col-lg-12 checkbox chkFeesType" for="chkAnnual">
+                                <input type="checkbox" name="chkAnnual" id="chkAnnual" value="Annual">
+                                Annual
+                            </label>
+                            <div class="col-lg-12 annualdiv"  style="display:none">
+                                <label class="control-label">Amount ($)</label>
+                                <input class="feesAmount" onkeypress="return isNumber(event)" type="text" name="Annual" id="amountAnnual" value="" required="required">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <label class="col-lg-12 checkbox chkFeesType" for="chkHourly">
+                                <input type="checkbox" name="chkHourly" id="chkHourly" value="Hourly">
+                                Hourly
+                            </label>
+                            <div class="col-lg-12 hourlydiv"  style="display:none">
+                                <label class="control-label">Hourly Rate($)</label>
+                                <input class="feesAmount" onkeypress="return isNumber(event)" type="text" name="Hourly" id="Hourly" value="" required="required">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <label class="col-lg-12 checkbox chkFeesType" for="chkSetUp">
+                                <input type="checkbox" name="chkSetUp" id="chkSetUp" value="SetUp">
+                                SetUp
+                            </label>
+                            <div class="col-lg-12 setupdiv"  style="display:none">
+                                <label class="control-label">Amount ($)</label>
+                                <input class="feesAmount" onkeypress="return isNumber(event)" type="text" name="SetUp" id="SetUp" value="" required="required">
+                            </div>
+                        </div>
+                        @*<label class="col-lg-3 col-md-4 col-lg-10 checkbox chkFeesType" for="chkOngoing">
+                            <input type="checkbox" name="chkOngoing" id="chkOngoing" value="Ongoing">
+                            Ongoing
+                        </label>
+                        <label class="col-lg-3 col-md-4 col-lg-10 checkbox chkFeesType" for="chkClaim">
+                            <input type="checkbox" name="chkClaim" id="chkClaim" value="Claim">
+                            Claim
+                        </label>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="row padd-top-10">
+            <div class="col-lg-4 volume">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Volume, new { @class = "control-label noRadius" })
+                    @Html.TextBoxFor(model => model.Volume, new { @onkeypress = "return isNumber(event)", @class = "form-control noRadius" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Budget, new { @class = "control-label noRadius" })@Html.Label("($)")
+                    @Html.TextBoxFor(model => model.Budget, new { @class = "form-control noRadius", @onkeypress = "return isNumber(event)", @required = "required" })
+                </div>
+            </div>
+        </div>*@
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Notes, new { @class = "control-label noRadius" })
+                    @Html.TextAreaFor(model => model.Notes, new { @class = "form-control noRadius" })
+                    @*@Html.ValidationMessageFor(model => model.Description)*@
+                </div>
+            </div>
+        </div>
+        <p>
+            <input type="submit" value="Save" class="btn btn-primary noRadius" />
+            <input type="button" value="Cancel" id="btnServiceCancel" class="btn btn-default noRadius" />
+        </p>
+    </fieldset>
+}
+
+

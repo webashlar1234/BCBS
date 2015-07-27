@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/kendo/2013.2.716/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2013.2.716/kendo.default.min.css" rel="stylesheet" />
+<script src="~/Scripts/kendo.all.min.js"></script>
+<script src="~/Scripts/JS/Customer.js"></script>
+<ul class="nav nav-tabs" role="tablist" style="margin-bottom: 5px;">
+    <li class="active noRadius">
+        <a href="#home" role="tab" data-toggle="tab" class="tabPlan noRadius">Plan
+        </a>
+    </li>
+    <li class="noRadius"><a href="#home" role="tab" data-toggle="tab" class=" tabVendors noRadius">Vendors
+    </a>
+    </li>
+</ul>
+<div class="tab-content">
+    <span class="btn btn-primary noRadius" id="addcustomer">Add New Customer
+    </span>
+    <span class="btn btn-primary noRadius" id="editcustomer" style="display: none">Edit Customer
+    </span>
+    <span class="btn btn-primary noRadius" id="deletecustomer" data-toggle="modal" data-target="#myModal">Delete
+    </span>
+
+    <div class="tab-pane fade active in" id="home">
+        <div id="CustomerGrid" class="k-grid k-widget k-secondary gridDiv" data-role="grid"></div>
+    </div>
+</div>
+<!-- /.modal -->
+<div class="modal fade noRadius" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content noRadius">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure want to delete this customer?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="" class="btn btn-default noRadius" data-dismiss="modal">No</button>
+                <button type="button" id="btnconfirmdelete" class="btn btn-primary noRadius">Yes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

@@ -1,0 +1,51 @@
+﻿.k-link {
+    color: black !important;
+    font-weight: bold !important;
+}
+
+.k-grid-header .k-header {
+    white-space: initial !important;
+}
+
+td {
+    word-wrap: break-word !important;
+}
+
+html {
+    font: 11pt sans-serif;
+}
+
+.k-grid .k-grid-content td {
+    border-style: dashed !important;
+    border-width: 0 1px 1px 0 !important;
+}
+
+.k-grid {
+    border-top-width: 0;
+}
+
+.k-grid, .k-grid-content {
+    height: auto !important;
+}
+
+.k-grid-content {
+    overflow: visible !important;
+}
+
+.k-grid .k-grid-header th {
+    border-top: 1px solid;
+    color: black !important;
+    word-wrap:break-word;
+}
+
+.k-grid-toolbar, .k-grid-pager > .k-link {
+    display: none;
+}
+
+.k-grid-footer {
+    padding-right: 0px !important;
+}
+
+.k-pager-wrap {
+    display: none;
+}

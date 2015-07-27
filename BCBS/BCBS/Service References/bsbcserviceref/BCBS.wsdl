@@ -1,0 +1,1273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BCBS" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2515/BCBS.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2515/BCBS.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBCBS_InsertProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProject" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectList" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdateProjectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProjectById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdateProjectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProjectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteProjectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProjectById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteProjectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProjectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectAvailableBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectAvailableBalance" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectAvailableBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectAvailableBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_CheckIsChargeCodeExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIsChargeCodeExist" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_CheckIsChargeCodeExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIsChargeCodeExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertServiceType_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertServiceType" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertServiceType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertServiceTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceTypeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceTypeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceTypeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceTypeById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceTypeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceTypeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceTypesByProjectId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceTypesByProjectId" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceTypesByProjectId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceTypesByProjectIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdateServiceTypeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateServiceTypeById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdateServiceTypeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateServiceTypeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteServiceTypeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteServiceTypeById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteServiceTypeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteServiceTypeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcustomerList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetcustomerList" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcustomerList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetcustomerListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetCustomerListForSBF_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerListForSBF" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetCustomerListForSBF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerListForSBFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetCustomerListForPlanCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerListForPlanCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetCustomerListForPlanCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerListForPlanCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_Insertcustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:Insertcustomer" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_Insertcustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertcustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdatecustomerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatecustomerById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdatecustomerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatecustomerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcustomerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetcustomerById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcustomerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetcustomerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcustomerByContractId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetcustomerByContractId" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcustomerByContractId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetcustomerByContractIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeletecustomerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletecustomerById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeletecustomerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletecustomerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertCustomerInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCustomerInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertCustomerInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCustomerInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractByCustomerId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractByCustomerId" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractByCustomerId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractByCustomerIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractbyCustomerIdHaveActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractbyCustomerIdHaveActivity" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractbyCustomerIdHaveActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractbyCustomerIdHaveActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetActivitiesByCustomerId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivitiesByCustomerId" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetActivitiesByCustomerId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivitiesByCustomerIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertSBFActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSBFActivity" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertSBFActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSBFActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_SetActivityBilled_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetActivityBilled" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_SetActivityBilled_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetActivityBilledResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAcknowledgementList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcknowledgementList" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAcknowledgementList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcknowledgementListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectServiceList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectServiceList" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectServiceList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectServiceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAcknowledgementProjectServiceList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcknowledgementProjectServiceList" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAcknowledgementProjectServiceList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcknowledgementProjectServiceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertCustomerAcknoeledgement_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCustomerAcknoeledgement" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertCustomerAcknoeledgement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCustomerAcknoeledgementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertAcknowledgementServices_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAcknowledgementServices" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertAcknowledgementServices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAcknowledgementServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAcknowledgementServicesbyAcknowledgemetnId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcknowledgementServicesbyAcknowledgemetnId" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAcknowledgementServicesbyAcknowledgemetnId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAcknowledgementServicesbyAcknowledgemetnIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_AcknowledgementApprove_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcknowledgementApprove" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_AcknowledgementApprove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcknowledgementApproveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteAcknowledgementById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAcknowledgementById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteAcknowledgementById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAcknowledgementByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcontractList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetcontractList" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcontractList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetcontractListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcontractListByProjectId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetcontractListByProjectId" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcontractListByProjectId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetcontractListByProjectIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_Insertcontract_InputMessage">
+    <wsdl:part name="parameters" element="tns:Insertcontract" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_Insertcontract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertcontractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdatecontractById_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatecontractById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdatecontractById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatecontractByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcontractById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetcontractById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetcontractById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetcontractByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteContractById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContractById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteContractById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContractByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractAvailableBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractAvailableBalance" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractAvailableBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractAvailableBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_CheckStausIsActive_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStausIsActive" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_CheckStausIsActive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckStausIsActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_CheckIsContractCodeExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIsContractCodeExist" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_CheckIsContractCodeExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIsContractCodeExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertContractActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertContractActivity" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_InsertContractActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertContractActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdateContractActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateContractActivity" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_UpdateContractActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateContractActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetLastContractActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastContractActivity" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetLastContractActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastContractActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetActivitiesByContractIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivitiesByContractIds" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetActivitiesByContractIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivitiesByContractIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetActivitiesByActivityIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivitiesByActivityIds" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetActivitiesByActivityIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivitiesByActivityIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAllActivities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActivities" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAllActivities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActivitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetActivityById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetActivityById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteActivityById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivityById" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_DeleteActivityById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActivityByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_CheckIsActivityCodeExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIsActivityCodeExist" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_CheckIsActivityCodeExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIsActivityCodeExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractFeesTypeByServiceId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractFeesTypeByServiceId" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractFeesTypeByServiceId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractFeesTypeByServiceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAccuralReportMonthYear_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccuralReportMonthYear" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAccuralReportMonthYear_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccuralReportMonthYearResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAccuralReportByMonthYear_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccuralReportByMonthYear" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAccuralReportByMonthYear_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccuralReportByMonthYearResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAccuralReportByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccuralReportByDate" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetAccuralReportByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccuralReportByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceByProjectId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceByProjectId" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceByProjectId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceByProjectIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetCustomerByServiceAndProjectId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerByServiceAndProjectId" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetCustomerByServiceAndProjectId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerByServiceAndProjectIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractDetailForActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractDetailForActivity" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetContractDetailForActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractDetailForActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectRevenueExpenseMonthYear_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectRevenueExpenseMonthYear" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectRevenueExpenseMonthYear_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectRevenueExpenseMonthYearResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectRevenueExpenseByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectRevenueExpenseByDate" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetProjectRevenueExpenseByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectRevenueExpenseByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceRevenueExpenseMonthYear_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRevenueExpenseMonthYear" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceRevenueExpenseMonthYear_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRevenueExpenseMonthYearResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceRevenueExpenseByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRevenueExpenseByDate" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetServiceRevenueExpenseByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceRevenueExpenseByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetPlanCustomerRevenueExpenseMonthYear_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanCustomerRevenueExpenseMonthYear" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetPlanCustomerRevenueExpenseMonthYear_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanCustomerRevenueExpenseMonthYearResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetPlanCustomerRevenueExpenseByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanCustomerRevenueExpenseByDate" />
+  </wsdl:message>
+  <wsdl:message name="IBCBS_GetPlanCustomerRevenueExpenseByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanCustomerRevenueExpenseByDateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBCBS">
+    <wsdl:operation name="InsertProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/InsertProject" message="tns:IBCBS_InsertProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/InsertProjectResponse" message="tns:IBCBS_InsertProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetProjectList" message="tns:IBCBS_GetProjectList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetProjectListResponse" message="tns:IBCBS_GetProjectList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetProjectById" message="tns:IBCBS_GetProjectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetProjectByIdResponse" message="tns:IBCBS_GetProjectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/UpdateProjectById" message="tns:IBCBS_UpdateProjectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/UpdateProjectByIdResponse" message="tns:IBCBS_UpdateProjectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjectById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/DeleteProjectById" message="tns:IBCBS_DeleteProjectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/DeleteProjectByIdResponse" message="tns:IBCBS_DeleteProjectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectAvailableBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetProjectAvailableBalance" message="tns:IBCBS_GetProjectAvailableBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetProjectAvailableBalanceResponse" message="tns:IBCBS_GetProjectAvailableBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckIsChargeCodeExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/CheckIsChargeCodeExist" message="tns:IBCBS_CheckIsChargeCodeExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/CheckIsChargeCodeExistResponse" message="tns:IBCBS_CheckIsChargeCodeExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/InsertServiceType" message="tns:IBCBS_InsertServiceType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/InsertServiceTypeResponse" message="tns:IBCBS_InsertServiceType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceTypeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetServiceTypeList" message="tns:IBCBS_GetServiceTypeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetServiceTypeListResponse" message="tns:IBCBS_GetServiceTypeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceTypeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetServiceTypeById" message="tns:IBCBS_GetServiceTypeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetServiceTypeByIdResponse" message="tns:IBCBS_GetServiceTypeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceTypesByProjectId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetServiceTypesByProjectId" message="tns:IBCBS_GetServiceTypesByProjectId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetServiceTypesByProjectIdResponse" message="tns:IBCBS_GetServiceTypesByProjectId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceTypeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/UpdateServiceTypeById" message="tns:IBCBS_UpdateServiceTypeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/UpdateServiceTypeByIdResponse" message="tns:IBCBS_UpdateServiceTypeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceTypeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/DeleteServiceTypeById" message="tns:IBCBS_DeleteServiceTypeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/DeleteServiceTypeByIdResponse" message="tns:IBCBS_DeleteServiceTypeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetcustomerList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetcustomerList" message="tns:IBCBS_GetcustomerList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetcustomerListResponse" message="tns:IBCBS_GetcustomerList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerListForSBF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetCustomerListForSBF" message="tns:IBCBS_GetCustomerListForSBF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetCustomerListForSBFResponse" message="tns:IBCBS_GetCustomerListForSBF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerListForPlanCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetCustomerListForPlanCustomer" message="tns:IBCBS_GetCustomerListForPlanCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetCustomerListForPlanCustomerResponse" message="tns:IBCBS_GetCustomerListForPlanCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Insertcustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/Insertcustomer" message="tns:IBCBS_Insertcustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/InsertcustomerResponse" message="tns:IBCBS_Insertcustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatecustomerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/UpdatecustomerById" message="tns:IBCBS_UpdatecustomerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/UpdatecustomerByIdResponse" message="tns:IBCBS_UpdatecustomerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetcustomerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetcustomerById" message="tns:IBCBS_GetcustomerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetcustomerByIdResponse" message="tns:IBCBS_GetcustomerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetcustomerByContractId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetcustomerByContractId" message="tns:IBCBS_GetcustomerByContractId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetcustomerByContractIdResponse" message="tns:IBCBS_GetcustomerByContractId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletecustomerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/DeletecustomerById" message="tns:IBCBS_DeletecustomerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/DeletecustomerByIdResponse" message="tns:IBCBS_DeletecustomerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/InsertCustomerInvoice" message="tns:IBCBS_InsertCustomerInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/InsertCustomerInvoiceResponse" message="tns:IBCBS_InsertCustomerInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContractByCustomerId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetContractByCustomerId" message="tns:IBCBS_GetContractByCustomerId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetContractByCustomerIdResponse" message="tns:IBCBS_GetContractByCustomerId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContractbyCustomerIdHaveActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetContractbyCustomerIdHaveActivity" message="tns:IBCBS_GetContractbyCustomerIdHaveActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetContractbyCustomerIdHaveActivityResponse" message="tns:IBCBS_GetContractbyCustomerIdHaveActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivitiesByCustomerId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetActivitiesByCustomerId" message="tns:IBCBS_GetActivitiesByCustomerId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetActivitiesByCustomerIdResponse" message="tns:IBCBS_GetActivitiesByCustomerId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSBFActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/InsertSBFActivity" message="tns:IBCBS_InsertSBFActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/InsertSBFActivityResponse" message="tns:IBCBS_InsertSBFActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetActivityBilled">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/SetActivityBilled" message="tns:IBCBS_SetActivityBilled_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/SetActivityBilledResponse" message="tns:IBCBS_SetActivityBilled_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAcknowledgementList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetAcknowledgementList" message="tns:IBCBS_GetAcknowledgementList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetAcknowledgementListResponse" message="tns:IBCBS_GetAcknowledgementList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectServiceList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetProjectServiceList" message="tns:IBCBS_GetProjectServiceList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetProjectServiceListResponse" message="tns:IBCBS_GetProjectServiceList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAcknowledgementProjectServiceList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetAcknowledgementProjectServiceList" message="tns:IBCBS_GetAcknowledgementProjectServiceList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetAcknowledgementProjectServiceListResponse" message="tns:IBCBS_GetAcknowledgementProjectServiceList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerAcknoeledgement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/InsertCustomerAcknoeledgement" message="tns:IBCBS_InsertCustomerAcknoeledgement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/InsertCustomerAcknoeledgementResponse" message="tns:IBCBS_InsertCustomerAcknoeledgement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAcknowledgementServices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/InsertAcknowledgementServices" message="tns:IBCBS_InsertAcknowledgementServices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/InsertAcknowledgementServicesResponse" message="tns:IBCBS_InsertAcknowledgementServices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAcknowledgementServicesbyAcknowledgemetnId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetAcknowledgementServicesbyAcknowledgemetnId" message="tns:IBCBS_GetAcknowledgementServicesbyAcknowledgemetnId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetAcknowledgementServicesbyAcknowledgemetnIdResponse" message="tns:IBCBS_GetAcknowledgementServicesbyAcknowledgemetnId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcknowledgementApprove">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/AcknowledgementApprove" message="tns:IBCBS_AcknowledgementApprove_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/AcknowledgementApproveResponse" message="tns:IBCBS_AcknowledgementApprove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAcknowledgementById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/DeleteAcknowledgementById" message="tns:IBCBS_DeleteAcknowledgementById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/DeleteAcknowledgementByIdResponse" message="tns:IBCBS_DeleteAcknowledgementById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetcontractList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetcontractList" message="tns:IBCBS_GetcontractList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetcontractListResponse" message="tns:IBCBS_GetcontractList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetcontractListByProjectId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetcontractListByProjectId" message="tns:IBCBS_GetcontractListByProjectId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetcontractListByProjectIdResponse" message="tns:IBCBS_GetcontractListByProjectId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Insertcontract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/Insertcontract" message="tns:IBCBS_Insertcontract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/InsertcontractResponse" message="tns:IBCBS_Insertcontract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatecontractById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/UpdatecontractById" message="tns:IBCBS_UpdatecontractById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/UpdatecontractByIdResponse" message="tns:IBCBS_UpdatecontractById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetcontractById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetcontractById" message="tns:IBCBS_GetcontractById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetcontractByIdResponse" message="tns:IBCBS_GetcontractById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContractById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/DeleteContractById" message="tns:IBCBS_DeleteContractById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/DeleteContractByIdResponse" message="tns:IBCBS_DeleteContractById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContractAvailableBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetContractAvailableBalance" message="tns:IBCBS_GetContractAvailableBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetContractAvailableBalanceResponse" message="tns:IBCBS_GetContractAvailableBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStausIsActive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/CheckStausIsActive" message="tns:IBCBS_CheckStausIsActive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/CheckStausIsActiveResponse" message="tns:IBCBS_CheckStausIsActive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckIsContractCodeExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/CheckIsContractCodeExist" message="tns:IBCBS_CheckIsContractCodeExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/CheckIsContractCodeExistResponse" message="tns:IBCBS_CheckIsContractCodeExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertContractActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/InsertContractActivity" message="tns:IBCBS_InsertContractActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/InsertContractActivityResponse" message="tns:IBCBS_InsertContractActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateContractActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/UpdateContractActivity" message="tns:IBCBS_UpdateContractActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/UpdateContractActivityResponse" message="tns:IBCBS_UpdateContractActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastContractActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetLastContractActivity" message="tns:IBCBS_GetLastContractActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetLastContractActivityResponse" message="tns:IBCBS_GetLastContractActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivitiesByContractIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetActivitiesByContractIds" message="tns:IBCBS_GetActivitiesByContractIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetActivitiesByContractIdsResponse" message="tns:IBCBS_GetActivitiesByContractIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivitiesByActivityIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetActivitiesByActivityIds" message="tns:IBCBS_GetActivitiesByActivityIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetActivitiesByActivityIdsResponse" message="tns:IBCBS_GetActivitiesByActivityIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActivities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetAllActivities" message="tns:IBCBS_GetAllActivities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetAllActivitiesResponse" message="tns:IBCBS_GetAllActivities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetActivityById" message="tns:IBCBS_GetActivityById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetActivityByIdResponse" message="tns:IBCBS_GetActivityById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivityById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/DeleteActivityById" message="tns:IBCBS_DeleteActivityById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/DeleteActivityByIdResponse" message="tns:IBCBS_DeleteActivityById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckIsActivityCodeExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/CheckIsActivityCodeExist" message="tns:IBCBS_CheckIsActivityCodeExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/CheckIsActivityCodeExistResponse" message="tns:IBCBS_CheckIsActivityCodeExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContractFeesTypeByServiceId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetContractFeesTypeByServiceId" message="tns:IBCBS_GetContractFeesTypeByServiceId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetContractFeesTypeByServiceIdResponse" message="tns:IBCBS_GetContractFeesTypeByServiceId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccuralReportMonthYear">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetAccuralReportMonthYear" message="tns:IBCBS_GetAccuralReportMonthYear_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetAccuralReportMonthYearResponse" message="tns:IBCBS_GetAccuralReportMonthYear_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccuralReportByMonthYear">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetAccuralReportByMonthYear" message="tns:IBCBS_GetAccuralReportByMonthYear_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetAccuralReportByMonthYearResponse" message="tns:IBCBS_GetAccuralReportByMonthYear_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccuralReportByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetAccuralReportByDate" message="tns:IBCBS_GetAccuralReportByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetAccuralReportByDateResponse" message="tns:IBCBS_GetAccuralReportByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByProjectId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetServiceByProjectId" message="tns:IBCBS_GetServiceByProjectId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetServiceByProjectIdResponse" message="tns:IBCBS_GetServiceByProjectId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByServiceAndProjectId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetCustomerByServiceAndProjectId" message="tns:IBCBS_GetCustomerByServiceAndProjectId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetCustomerByServiceAndProjectIdResponse" message="tns:IBCBS_GetCustomerByServiceAndProjectId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContractDetailForActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetContractDetailForActivity" message="tns:IBCBS_GetContractDetailForActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetContractDetailForActivityResponse" message="tns:IBCBS_GetContractDetailForActivity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectRevenueExpenseMonthYear">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetProjectRevenueExpenseMonthYear" message="tns:IBCBS_GetProjectRevenueExpenseMonthYear_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetProjectRevenueExpenseMonthYearResponse" message="tns:IBCBS_GetProjectRevenueExpenseMonthYear_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectRevenueExpenseByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetProjectRevenueExpenseByDate" message="tns:IBCBS_GetProjectRevenueExpenseByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetProjectRevenueExpenseByDateResponse" message="tns:IBCBS_GetProjectRevenueExpenseByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceRevenueExpenseMonthYear">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetServiceRevenueExpenseMonthYear" message="tns:IBCBS_GetServiceRevenueExpenseMonthYear_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetServiceRevenueExpenseMonthYearResponse" message="tns:IBCBS_GetServiceRevenueExpenseMonthYear_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceRevenueExpenseByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetServiceRevenueExpenseByDate" message="tns:IBCBS_GetServiceRevenueExpenseByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetServiceRevenueExpenseByDateResponse" message="tns:IBCBS_GetServiceRevenueExpenseByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanCustomerRevenueExpenseMonthYear">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetPlanCustomerRevenueExpenseMonthYear" message="tns:IBCBS_GetPlanCustomerRevenueExpenseMonthYear_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetPlanCustomerRevenueExpenseMonthYearResponse" message="tns:IBCBS_GetPlanCustomerRevenueExpenseMonthYear_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanCustomerRevenueExpenseByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBCBS/GetPlanCustomerRevenueExpenseByDate" message="tns:IBCBS_GetPlanCustomerRevenueExpenseByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBCBS/GetPlanCustomerRevenueExpenseByDateResponse" message="tns:IBCBS_GetPlanCustomerRevenueExpenseByDate_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IBCBS" type="tns:IBCBS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertProject">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/InsertProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectList">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetProjectList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetProjectById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProjectById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/UpdateProjectById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProjectById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/DeleteProjectById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectAvailableBalance">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetProjectAvailableBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIsChargeCodeExist">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/CheckIsChargeCodeExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertServiceType">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/InsertServiceType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceTypeList">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetServiceTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceTypeById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetServiceTypeById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceTypesByProjectId">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetServiceTypesByProjectId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServiceTypeById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/UpdateServiceTypeById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServiceTypeById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/DeleteServiceTypeById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetcustomerList">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetcustomerList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerListForSBF">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetCustomerListForSBF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerListForPlanCustomer">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetCustomerListForPlanCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insertcustomer">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/Insertcustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatecustomerById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/UpdatecustomerById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetcustomerById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetcustomerById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetcustomerByContractId">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetcustomerByContractId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletecustomerById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/DeletecustomerById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerInvoice">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/InsertCustomerInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractByCustomerId">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetContractByCustomerId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractbyCustomerIdHaveActivity">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetContractbyCustomerIdHaveActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivitiesByCustomerId">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetActivitiesByCustomerId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSBFActivity">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/InsertSBFActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetActivityBilled">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/SetActivityBilled" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcknowledgementList">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetAcknowledgementList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectServiceList">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetProjectServiceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcknowledgementProjectServiceList">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetAcknowledgementProjectServiceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerAcknoeledgement">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/InsertCustomerAcknoeledgement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAcknowledgementServices">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/InsertAcknowledgementServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcknowledgementServicesbyAcknowledgemetnId">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetAcknowledgementServicesbyAcknowledgemetnId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcknowledgementApprove">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/AcknowledgementApprove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAcknowledgementById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/DeleteAcknowledgementById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetcontractList">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetcontractList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetcontractListByProjectId">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetcontractListByProjectId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insertcontract">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/Insertcontract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatecontractById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/UpdatecontractById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetcontractById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetcontractById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContractById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/DeleteContractById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractAvailableBalance">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetContractAvailableBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStausIsActive">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/CheckStausIsActive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIsContractCodeExist">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/CheckIsContractCodeExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertContractActivity">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/InsertContractActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateContractActivity">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/UpdateContractActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastContractActivity">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetLastContractActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivitiesByContractIds">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetActivitiesByContractIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivitiesByActivityIds">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetActivitiesByActivityIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActivities">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetAllActivities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetActivityById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActivityById">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/DeleteActivityById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIsActivityCodeExist">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/CheckIsActivityCodeExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractFeesTypeByServiceId">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetContractFeesTypeByServiceId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccuralReportMonthYear">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetAccuralReportMonthYear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccuralReportByMonthYear">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetAccuralReportByMonthYear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccuralReportByDate">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetAccuralReportByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByProjectId">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetServiceByProjectId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByServiceAndProjectId">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetCustomerByServiceAndProjectId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractDetailForActivity">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetContractDetailForActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectRevenueExpenseMonthYear">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetProjectRevenueExpenseMonthYear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectRevenueExpenseByDate">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetProjectRevenueExpenseByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceRevenueExpenseMonthYear">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetServiceRevenueExpenseMonthYear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceRevenueExpenseByDate">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetServiceRevenueExpenseByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanCustomerRevenueExpenseMonthYear">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetPlanCustomerRevenueExpenseMonthYear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanCustomerRevenueExpenseByDate">
+      <soap:operation soapAction="http://tempuri.org/IBCBS/GetPlanCustomerRevenueExpenseByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BCBS">
+    <wsdl:port name="BasicHttpBinding_IBCBS" binding="tns:BasicHttpBinding_IBCBS">
+      <soap:address location="http://localhost:2515/BCBS.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

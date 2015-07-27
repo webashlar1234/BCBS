@@ -1,0 +1,80 @@
+﻿@model BCBS.Models.ProjectModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/JS/ProjectDetail.js"></script>
+    <fieldset>
+        <legend>Edit Project</legend>
+        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChargeCode, new { @class = "control-label noRadius" })
+                    @Html.TextBoxFor(model => model.ChargeCode, new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+                    @*@Html.ValidationMessageFor(model => model.ChargeCode)*@
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, new { @class = "control-label noRadius" })
+                    @Html.DropDownListFor(model => model.Status, new List<SelectListItem>{
+                    new SelectListItem{ Text="Active", Value = "Active" },
+                    new SelectListItem{ Text="Suspended", Value = "Suspended" },
+                    new SelectListItem{ Text="Removed", Value = "Removed" }
+                 }, "--Select Status--", new { @class = "form-control noRadius", @required = "required" })
+                    @*@Html.ValidationMessageFor(model => model.Status)*@
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label noRadius" })
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control noRadius", @required = "required" })
+                    @*@Html.ValidationMessageFor(model => model.Name)*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                     @Html.LabelFor(model => model.HighLevelBudget, new { @class = "control-label noRadius", @required = "required" })@Html.Label("($)")
+                    @Html.TextBoxFor(model => model.HighLevelBudget, new { @class = "form-control noRadius",@onkeypress="return isNumber(event)", @required = "required"  })
+                    @*@Html.ValidationMessageFor(model => model.HighLevelBudget)*@
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RC, new { @class = "control-label noRadius", @required = "required" })
+                    @Html.TextBoxFor(model => model.RC, new { @class = "form-control noRadius" })
+                    @*@Html.ValidationMessageFor(model => model.HighLevelBudget)*@
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label noRadius", @required = "required", @data_required = "true" })
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control noRadius" })
+                    @*@Html.ValidationMessageFor(model => model.Description)*@
+                </div>
+            </div>
+        </div>
+        <p>
+            <input type="submit" value="Save" class="btn btn-primary noRadius" />
+            <input type="button" value="Cancel" id="btnProjectCancel" class="btn btn-default noRadius" />
+
+        </p>
+    </fieldset>
+}
+
+@*@Scripts.Render("~/bundles/jqueryval")*@

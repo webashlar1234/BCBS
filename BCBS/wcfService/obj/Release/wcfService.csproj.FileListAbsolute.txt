@@ -1,0 +1,9 @@
+D:\dotNetProjects\BCBS ACC Sys\BCBS\wcfService\bin\wcfService.dll
+D:\dotNetProjects\BCBS ACC Sys\BCBS\wcfService\bin\wcfService.pdb
+D:\dotNetProjects\BCBS ACC Sys\BCBS\wcfService\bin\MySql.Data.dll
+D:\dotNetProjects\BCBS ACC Sys\BCBS\wcfService\bin\MySql.Web.dll
+D:\dotNetProjects\BCBS ACC Sys\BCBS\wcfService\bin\Newtonsoft.Json.dll
+D:\dotNetProjects\BCBS ACC Sys\BCBS\wcfService\bin\Newtonsoft.Json.xml
+D:\dotNetProjects\BCBS ACC Sys\BCBS\wcfService\obj\Release\wcfService.csprojResolveAssemblyReference.cache
+D:\dotNetProjects\BCBS ACC Sys\BCBS\wcfService\obj\Release\wcfService.dll
+D:\dotNetProjects\BCBS ACC Sys\BCBS\wcfService\obj\Release\wcfService.pdb

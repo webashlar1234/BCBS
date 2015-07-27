@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Revenue-Expense";
+}
+@*<link href="~/Content/c3.css" rel="stylesheet" />
+<script src="~/Scripts/d3.js"></script>
+<script src="~/Scripts/c3.js"></script>
+<div id="chart"></div>*@
+<link href="~/Content/kendo/2013.2.716/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2013.2.716/kendo.default.min.css" rel="stylesheet" />
+<script src="~/Scripts/kendo.all.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css" rel="stylesheet" type="text/css">
+<link href="~/Content/BootStrap/css/datepicker.css" rel="stylesheet" />
+<script src="~/Scripts/Bootstrap/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="form-group">
+            @Html.DropDownList("SearchBy", new List<SelectListItem>{
+                     new SelectListItem{ Text="Month - Year", Value = "MonthYear",Selected=true},
+                    //new SelectListItem{ Text="Year Only", Value = "ByMonthOnly" },
+                    //new SelectListItem{ Text="From - To (Month)", Value = "FromToMonth" },
+                    new SelectListItem{ Text="From - To (Date)", Value = "FromToDate" },
+                 }, "--Select Filter Type--", new { @class = "form-control noRadius", @required = "required" })
+        </div>
+    </div>
+    <div class="col-lg-3 month">
+        @Html.DropDownList("Month", new SelectList(ViewBag.Months, "value", "Text", ViewBag.currentMonth), "--Select Month--", new { @class = "form-control noRadius", @required = "required" })
+    </div>
+    <div class="col-lg-3 year">
+        @Html.DropDownList("Year", new SelectList(ViewBag.Years, "Year", "Year", ViewBag.currentyear), "--select Year--", new { @class = "form-control noRadius", @required = "required" })
+    </div>
+    <div class="col-lg-3 fromdate" style="display: none">
+        @Html.TextBox("FromDate", null, new { @class = "form-control noRadius", @required = "required" })
+    </div>
+    <div class="col-lg-3 enddate" style="display: none">
+        @Html.TextBox("EndDate", null, new { @class = "form-control noRadius", @required = "required" })
+    </div>
+    <div class="col-lg-3">
+        <span class="btn btn-primary noRadius" id="btnSearch">Filter
+        </span>
+    </div>
+</div>
+<div class="row lblSearch">
+    <div class="col-lg-12 ">
+        @Html.Label("Showing results for :", new { @class = "control-label noRadius" }) <strong class="lblSearchContent">July 2015 to </strong>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <span class="btn noRadius btncharttype" id="btnproject">Project vs Revenue vs Expense
+        </span>
+        <span class="btn noRadius btncharttype" id="btnservice">Service vs Revenue vs Expense
+        </span>
+        <span class="btn noRadius btncharttype" id="btnplan">Plan vs Revenue vs Expense
+        </span>
+    </div>
+</div>
+<div class="row padd-top-10 col-lg-10">
+    <div id="chart"></div>
+
+</div>
+<script src="~/Scripts/JS/PlanRevenueExpense.js"></script>

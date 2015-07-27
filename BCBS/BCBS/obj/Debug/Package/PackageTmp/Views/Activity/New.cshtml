@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "New Activity";
+}
+<link href="~/Content/kendo/2013.2.716/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2013.2.716/kendo.default.min.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/kendo.all.min.js"></script>
+<script src="~/Scripts/additional-method.js"></script>
+<script src="~/Scripts/JS/Activity.js"></script>
+<fieldset>
+    <legend>Activity</legend>
+    <form>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.Label("Project", new { @class = "control-label noRadius" })
+                    @Html.DropDownList("Project", new SelectList(ViewBag.Projects, "Id", "Name"), "--Select Project--", new { @class = "form-control noRadius", @required = "required" })
+                </div>
+            </div>
+            <div class="col-lg-3 serviceddl" style="display: none">
+                <div class="form-group">
+                    @Html.Label("Service", new { @class = "control-label noRadius" })
+                    @*@Html.DropDownList("Service", new SelectList(ViewBag.Services, "Id", "Name"), "--Select Service--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+                    @Html.DropDownList("Service", Enumerable.Empty<SelectListItem>(), "--Select Service--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+                    <sapn id="serviceDetail" style="font-size: 11px; font-style: italic; color: #00BCD4;"></sapn>
+                </div>
+            </div>
+            <div class="col-lg-3 customerddl" style="display: none">
+                <div class="form-group">
+                    @Html.Label("Customer", new { @class = "control-label noRadius" })
+                    @*@Html.DropDownList("Customer", new SelectList(ViewBag.Customers, "Id", "Name"), "--Select Customer--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+                    @Html.DropDownList("Customer", Enumerable.Empty<SelectListItem>(), "--Select Customer--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+        @*<div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.Label("Contract", new { @class = "control-label noRadius" })
+                @Html.DropDownList("Contract", new SelectList(ViewBag.Contracts, "Id", "ContractCode"), "--Select Contract--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+            </div>
+        </div>
+    </div>*@
+        <div class="row monthgroup" style="display: none">
+            <div class="col-lg-3 frommonth">
+                <div class="form-group">
+                    @Html.Label("From Month", new { @class = "control-label noRadius" })
+                    @Html.DropDownList("FromMonth", new SelectList(ViewBag.Months, "value", "Text", ViewBag.currentMonth), "--Select Month--", new { @class = "form-control noRadius", @required = "required" })
+                </div>
+            </div>
+            <div class="col-lg-3 endmonth">
+                <div class="form-group">
+                    @Html.Label("To Month", new { @class = "control-label noRadius" })
+                    @Html.DropDownList("EndMonth", new SelectList(ViewBag.Months, "value", "Text", ViewBag.currentMonth), "--Select Month--", new { @class = "form-control noRadius", @required = "required" })
+                </div>
+            </div>
+            <div class="col-lg-3 year">
+                <div class="form-group">
+                    @Html.Label("Year", new { @class = "control-label noRadius" })
+                    @Html.DropDownList("Year", new SelectList(ViewBag.Years, "Year", "Year", DateTime.Now.Year.ToString()), "--Select Year--", new { @class = "form-control noRadius", @required = "required" })
+                </div>
+            </div>
+            @*@Html.DropDownList("EndMonth", new SelectList(ViewBag.Months, "value", "Text", ViewBag.currentMonth), "--Select Month--", new { @class = "form-control noRadius", @required = "required" })*@
+
+        </div>
+    </form>
+    <div class="row btngroup" style="display: none">
+        <div class="col-lg-4">
+            <span class="btn btn-primary noRadius btnGetContract">Get Contract Detail</span>
+        </div>
+    </div>
+    <div class="row padd-top-10">
+        <div class="col-lg-9">
+            <div id="ContractGrid">
+            </div>
+        </div>
+    </div>
+</fieldset>

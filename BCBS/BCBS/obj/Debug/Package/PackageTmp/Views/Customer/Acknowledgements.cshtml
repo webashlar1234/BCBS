@@ -1,0 +1,42 @@
+﻿@model BCBS.Models.AcknowledgementServiceModel
+
+@{
+    ViewBag.Title = "Acknowledgements";
+}
+<link href="~/Content/kendo/2013.2.716/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2013.2.716/kendo.default.min.css" rel="stylesheet" />
+<script src="~/Scripts/kendo.all.min.js"></script>
+<script src="~/Scripts/JS/AcknowledgementList.js"></script>
+<span class="btn btn-primary noRadius" id="addAcknowledgement">New Acknowledgement
+</span>
+<span class="btn btn-primary noRadius" id="btnapprove" style="display: none">Approve Acknowledgement
+</span>
+
+<span class="btn btn-primary noRadius" id="deleteAcknowledgement" data-toggle="modal" data-target="#myModal">Delete
+</span>
+@*
+<span class="btn btn-primary noRadius" id="editcustomer" style="display: none">Edit Customer
+</span>
+*@
+
+<div class="modal fade noRadius" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content noRadius">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure want to delete this Acknowledgement?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="" class="btn btn-default noRadius" data-dismiss="modal">No</button>
+                <button type="button" id="btnconfirmdelete" class="btn btn-primary noRadius">Yes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<div id="AcknowledgementGrid" class="k-grid k-widget k-secondary gridDiv" data-role="grid"></div>

@@ -1,0 +1,45 @@
+﻿@model BCBS.Models.InvoiceViewModel
+
+@{
+    ViewBag.Title = "Create Invoice";
+}
+
+@using (Html.BeginForm("Invoice", "Customer", FormMethod.Post, new { enctype="multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <link href="~/Content/kendo/2013.2.716/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/2013.2.716/kendo.default.min.css" rel="stylesheet" />
+    <script src="~/Scripts/kendo.all.min.js"></script>
+    <link href="~/Content/BootStrap/css/datepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/Bootstrap/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/Bootstrap/bootstrap-multiselect.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/additional-method.js"></script>
+    <script  type="text/javascript" src="~/Scripts/JS/Invoice.js"></script>
+    <fieldset>
+        <div class="row">
+
+            <div class="col-lg-4">
+                <div class="form-inline">
+                    @Html.Label("Invoice for Customer : ")
+                    @Html.DropDownListFor(model => model.CustomerId, new SelectList(ViewBag.Customers, "Id", "Name"), "--Select Customer--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+                </div>
+                 <hr />
+            </div>
+            <div class="col-lg-4 contract" style="display:none">
+                <div class="form-inline">
+                    @Html.Label("Contract : ")
+                    @Html.DropDownListFor(model => model.ContractId, Enumerable.Empty<SelectListItem>(), "--Select Contract--", new { @class = "form-control noRadius", @required = "required", @data_required = "true",@multiple="multiple" })
+                </div>
+                 <hr />
+            </div>
+            @*<legend style="padding-top: 5px;"></legend>*@
+           
+        </div>
+        <div class="row">
+            <div id="InvoiceDiv">
+            </div>
+        </div>
+
+    </fieldset>
+}

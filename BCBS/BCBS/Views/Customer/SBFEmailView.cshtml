@@ -1,0 +1,164 @@
+﻿@model BCBS.Models.SBFEmailViewModel
+
+@{
+    ViewBag.Title = "SBFEmailView";
+    Layout = null;
+       
+}
+<style type="text/css">
+    td {
+        border: 1px solid;
+        height: 25px;
+        border-collapse: collapse;
+    }
+
+    th {
+        border: 1px solid;
+    }
+
+    table {
+        width: 90%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    legend {
+        border-bottom: 1px solid grey;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .font-bold {
+        font-weight: bold;
+    }
+
+    .font-20 {
+        font-size: 20px;
+    }
+
+    .row {
+        margin-left: 10px;
+    }
+</style>
+<div class="row">
+    <div style="margin: 0 auto">
+        <img src="http://216.172.109.105/BCBS/Images/logo.png" />
+        <h2>BCBS Acc Sys</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">#Invoice : @Model.Invoice.InvoiceNumber</div>
+        <div class="col-lg-8">Invoice Date : @Model.Invoice.InvoiceDate.ToString("MM-dd-yyyy")</div>
+        <div class="col-lg-8">Prepared By : @Model.Invoice.PrepareBy</div>
+        <div class="col-lg-8">Authorized By : @Model.Invoice.AuthorizedBy</div>
+        <div class="col-lg-8">Division name : @Model.Invoice.Division</div>
+    </div>
+</div>
+<div class="row">
+    <legend>Billing Information</legend>
+    <div class="row" style="clear: both">
+        <div class="col-lg-8">
+            Plan/Customer name:  @Model.Customer.Name
+        </div>
+        <div class="col-lg-8">
+            Plan/Customer#:  @Model.Customer.ChargeCode
+        </div>
+        <div class="col-lg-8">
+            Address:
+        </div>
+
+        <div class="col-lg-8">
+            @Model.Customer.CustomerAddress,
+        </div>
+        <div class="col-lg-8">
+            @Model.Customer.City @Model.Customer.State  @Model.Customer.PostalCode,
+        </div>
+
+        <div class="col-lg-8">
+            Customer Contact Name:  @Model.Customer.FirstName @Model.Customer.LastName
+        </div>
+        <div class="col-lg-8">
+            Telephone #:  @Model.Customer.Phone
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.ActivityList != null)
+    {
+        <div class="row">
+            <table>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Project")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Service")
+                    </th>
+                    <th>
+                        @Html.DisplayName("FromDate")
+                    </th>
+                    <th>
+                        @Html.DisplayName("EndDate")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Volume")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Amount")
+                    </th>
+                </tr>
+                @foreach (var item in Model.ActivityList)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Service)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FromDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Volume)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="font-bold font-20" style="float: right; margin-right: 10%">Total Amount : @Model.Invoice.TotalAmount</div>
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="row" style="clear: both">
+        @if (Model.Invoice.IsDeffered == true)
+        {
+            <div class="col-lg-8">
+                Deffered:  @Model.Invoice.IsDeffered
+            </div>
+            <div class="col-lg-8">
+                Deffered Account:  @Model.Invoice.DefferedAccount
+            </div>
+        }
+        <div class="col-lg-8">
+            From Date:  @Model.Invoice.FromDate.ToString("MM-dd-yyyy")
+        </div>
+        <div class="col-lg-8">
+            To Date:  @Model.Invoice.ToDate.ToString("MM-dd-yyyy")
+        </div>
+        <div class="col-lg-8">
+            Special Instruction:<br />
+            @Model.Invoice.SpecialInstuction
+        </div>
+        <div class="col-lg-8">
+            Supporting Documents:<bt></bt>
+            @Model.Invoice.SupportingDocuments
+        </div>
+    </div>
+</div>

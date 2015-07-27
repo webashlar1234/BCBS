@@ -1,0 +1,244 @@
+﻿@model BCBS.Models.InvoiceViewModel
+
+@{
+    string ContactName = Model.Customer.FirstName + " " + Model.Customer.LastName;
+}
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.TotalAmount)
+@Html.Hidden("Activities")
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.InvoiceNumber, new { @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.InvoiceNumber, new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.InvoiceDate, new { @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.InvoiceDate, "{0:MM/dd/yyyy}", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.PrepareBy, new { @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.PrepareBy, new { @class = "form-control noRadius", @required = "required" })
+            @*@Html.ValidationMessageFor(model => model.Name)*@
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.PrepareByExt, new { @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.PrepareByExt, new { @class = "form-control noRadius", @required = "required" })
+            @*@Html.TextBoxFor(model => model.CustomerType, new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.AuthorizedBy, new { @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.AuthorizedBy, new { @class = "form-control noRadius", @required = "required" })
+            @*@Html.ValidationMessageFor(model => model.Name)*@
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.AuthorizedByExt, new { @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.AuthorizedByExt, new { @class = "form-control noRadius", @required = "required" })
+            @*@Html.TextBoxFor(model => model.CustomerType, new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Division, new { @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.Division, new { @class = "form-control noRadius", @required = "required" })
+            @*@Html.ValidationMessageFor(model => model.Name)*@
+        </div>
+    </div>
+</div>
+<div class="success">
+    <div class="col-lg-8">
+        <legend>Billing Information</legend>
+    </div>
+    @*<label class="control-label noRadius" for="CustomerAddress">Address</label>*@
+    <div class="row" style="clear: both">
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.Label("Customer Name", new { @class = "control-label noRadius" })
+                @Html.TextBoxFor(model => model.Customer.Name, new { @class = "form-control noRadius", @required = "required", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.Label("Customer #", new { @class = "control-label noRadius" })
+                @Html.TextBoxFor(model => model.Customer.Id, new { @class = "form-control noRadius", @required = "required", @readonly = "readonly" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Customer.CustomerAddress, new { @class = "control-label noRadius" })
+                @Html.TextBoxFor(model => model.Customer.CustomerAddress, new { @class = "form-control noRadius", @required = "required", @data_required = "true", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Customer.City, new { @class = "control-label noRadius" })
+                @Html.TextBoxFor(model => model.Customer.City, new { @class = "form-control noRadius",  @readonly = "readonly" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Customer.State, new { @class = "control-label noRadius" })
+                @Html.TextBoxFor(model => model.Customer.State, new { @class = "form-control noRadius", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Customer.PostalCode, new { @class = "control-label noRadius" })
+                @Html.TextBoxFor(model => model.Customer.PostalCode, new { @class = "form-control noRadius", @readonly = "readonly" })
+            </div>
+        </div>
+    </div>
+    <div class="row" style="clear: both">
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.Label("Customer Contact Name", new { @class = "control-label noRadius" })
+                @Html.TextBox("ContactName", ContactName, new { @class = "form-control noRadius", @required = "required", @data_required = "true", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Customer.Phone, new { @class = "control-label noRadius", @data_required = "true" })
+                @Html.TextBoxFor(model => model.Customer.Phone, new { @required = "required", @class = "form-control noRadius", @readonly = "readonly" })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="success">
+    <div class="col-lg-10">
+        <legend>Contract-Activity Detail</legend>
+    </div>
+    <div class="row col-lg-10" style="clear: both">
+        <div style="margin-bottom: 10px;">
+            <input type="text" id="datefrom" placeholder="From Date"/>
+            <input type="text" id="dateto" placeholder="To Date"/>
+             @Html.DropDownList("status", new List<SelectListItem>{
+                    new SelectListItem{ Text="Active", Value = "Active" },
+                    new SelectListItem{ Text="Suspended", Value = "Suspended" },
+                    new SelectListItem{ Text="Removed", Value = "Removed" },
+                 }, "--Select Status--", new { @class = "noRadius" })
+            <span class="btn btn-sm btn-primary" id="btnfilter">Filter</span>
+             <span class="btn btn-sm btn-primary" id="btnclearfilter">Clear Filter</span>
+        </div>
+        <div id="ContractGrid"></div>
+        @*<div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Customer.FirstName, new { @class = "control-label noRadius" })
+                        @Html.TextBoxFor(model => model.Customer.FirstName, new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Customer.Phone, new { @class = "control-label noRadius", @data_required = "true" })
+                        @Html.TextBoxFor(model => model.Customer.Phone, new { @required = "required", @class = "form-control noRadius" })
+                    </div>
+                </div>*@
+    </div>
+
+    @* <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Phone, new { @class = "control-label noRadius", @data_required = "true" })
+                        @Html.TextBoxFor(model => model.Phone, new { @required = "required", @class = "form-control noRadius" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Fax, new { @class = "control-label noRadius" })
+                        @Html.TextBoxFor(model => model.Fax, new { @required = "required", @class = "form-control noRadius" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Occupation, new { @class = "control-label noRadius" })
+                        @Html.TextBoxFor(model => model.Occupation, new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "control-label noRadius" })
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control noRadius", @required = "required" })
+                    </div>
+                </div>
+            </div>*@
+</div>
+<div class="row padd-top-10" style="clear: both">
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsDeffered, new { @class = "control-label noRadius" })
+            @Html.DropDownListFor(model => model.IsDeffered, new List<SelectListItem>{
+                    new SelectListItem{ Text="Yes", Value = "true" },
+                    new SelectListItem{ Text="No", Value = "false" },
+                 }, "--Select Deffered--", new { @class = "form-control noRadius", @required = "required" })
+        </div>
+    </div>
+    <div class="col-lg-4 DefferedAccount" style="display: none">
+        <div class="form-group">
+            @Html.LabelFor(model => model.DefferedAccount, new { @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.DefferedAccount, new { @class = "form-control noRadius" })
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.FromDate, new { @value = "", @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.FromDate, "{0:MM/dd/yyyy}", new { @class = "form-control noRadius" })
+
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ToDate, new { @class = "control-label noRadius" })
+            @Html.TextBoxFor(model => model.ToDate, "{0:MM/dd/yyyy}", new { @class = "form-control noRadius" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="form-group">
+            @Html.LabelFor(model => model.SpecialInstuction, new { @class = "control-label noRadius" })
+            @Html.TextAreaFor(model => model.SpecialInstuction, new { @class = "form-control noRadius" })
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="form-group">
+            @Html.LabelFor(model => model.SupportingDocuments, new { @class = "control-label noRadius" })
+            <input type="file" name="file" id="file" multiple="multiple" />
+            @*@Html.TextBoxFor(model => model.SupportingDocuments, new { @class = "form-control noRadius" })*@
+        </div>
+    </div>
+</div>
+<p>
+    <input type="submit" value="Save and Export" class="btn btn-primary noRadius" />
+    <input type="button" value="Cancel" id="btnCustomerCancel" class="btn btn-default noRadius" />
+</p>

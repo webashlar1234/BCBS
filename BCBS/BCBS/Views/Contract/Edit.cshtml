@@ -1,0 +1,158 @@
+﻿@model BCBS.Models.ContractModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/BootStrap/css/datepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/kendo.all.min.js"></script>
+    <script src="~/Scripts/Bootstrap/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/JS/ContractDetail.js"></script>
+    <fieldset>
+        <legend>Edit Contract</legend>
+        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ContractCode, new { @class = "control-label noRadius" })
+                    @Html.TextBoxFor(model => model.ContractCode, new { @class = "form-control noRadius", @required = "required", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, new { @class = "control-label noRadius" })
+                    @Html.DropDownListFor(model => model.Status, new List<SelectListItem>{
+                    new SelectListItem{ Text="Active", Value = "Active" },
+                    new SelectListItem{ Text="Suspended", Value = "Suspended" },
+                    new SelectListItem{ Text="Removed", Value = "Removed" },
+                 }, "--Select Status--", new { @class = "form-control noRadius", @required = "required" })
+                    @*@Html.ValidationMessageFor(model => model.Status)*@
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CustomerId, new { @class = "control-label noRadius" })
+                    @Html.DropDownListFor(model => model.CustomerId, new SelectList(ViewBag.Customers, "Id", "Name"), "--Select Customer--", new { @class = "form-control noRadius", @required = "required", @data_required = "true", @readonly = "readonly" })
+                    @*@Html.DropDownListFor(model => model.ProjectId,Enumerable.Empty<SelectListItem>(),"--Select Project--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+                    @*@Html.ValidationMessageFor(model => model.ChargeCode)*@
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectId, new { @class = "control-label noRadius" })
+                    @Html.DropDownListFor(model => model.ProjectId, new SelectList(ViewBag.Projects, "Id", "Name"), "--Select Project--", new { @class = "form-control noRadius", @required = "required", @readonly = "readonly" })
+                    <sapn id="estBalance" style="font-size: 11px; font-style: italic; color: #00BCD4;"></sapn>
+                    @*@Html.ValidationMessageFor(model => model.Status)*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.Hidden("hdnServiceId", Model.ServiceId)
+                    @Html.LabelFor(model => model.ServiceId, new { @class = "control-label noRadius" })
+                    @Html.DropDownListFor(model => model.ServiceId, Enumerable.Empty<SelectListItem>(), "--Select Service--", new { @class = "form-control noRadius", @required = "required", @data_required = "true", @readonly = "readonly" })
+                    <span id="serviceDetail" style="font-size: 11px; font-style: italic; color: #00BCD4;"></span>
+                    @Html.HiddenFor(model => model.FeesType)
+
+                </div>
+            </div>
+            @*<div class="col-lg-4">
+                <div class="form-group">
+                    @Html.Hidden("hdnFeesType", Model.FeesType)
+                    @Html.LabelFor(model => model.FeesType, new { @class = "control-label noRadius" })
+                    @Html.DropDownListFor(model => model.FeesType, Enumerable.Empty<SelectListItem>(), "--Select Fees Type--", new { @class = "form-control noRadius", @required = "required", @readonly = "readonly" })
+                    <sapn id="feestypeDetail" style="font-size: 11px; font-style: italic; color: #00BCD4;"></sapn>
+                </div>
+            </div>*@
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FromDate, new { @class = "control-label noRadius" })
+                    @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control noRadius fromdate", @required = "required", @data_required = "true", @Value = Model.FromDate.ToString("MM/dd/yyyy"), @readonly = "readonly", @data_date_enable_on_read_only = "false" })
+
+                    @*@Html.TextBoxFor(model => model.ContractType, new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndDate, new { @class = "control-label noRadius" })
+                    @Html.TextBoxFor(model => model.EndDate, new { @class = "form-control noRadius enddate", @required = "required", @data_required = "true", @Value = Model.EndDate.ToString("MM/dd/yyyy") })
+
+                    @*@Html.TextBoxFor(model => model.ContractType, new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <legend>Charges</legend>
+                <label class="control-label">
+                    @Html.RadioButtonFor(model => model.Dirrection, true, new { @readonly = "readonly" })  Revenue</label>
+                <label class="control-label">@Html.RadioButtonFor(model => model.Dirrection, false, new { @readonly = "readonly" })  Expense</label>
+            </div>
+            <div class="col-lg-4">
+                <legend>Value</legend>
+                <label class="control-label">
+                    @Html.RadioButtonFor(model => model.Estimate, true, new { @readonly = "readonly" }) Actual
+                </label>
+                <label class="control-label">@Html.RadioButtonFor(model => model.Estimate, false, new { @readonly = "readonly" })  Estimated </label>
+
+            </div>
+        </div>
+        <div class="row padd-top-10">
+            <div class="col-lg-4 volume">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Volume, new { @class = "control-label noRadius" })
+                    @Html.TextBoxFor(model => model.Volume, null, new { @onkeypress = "return isNumber(event)", @class = "form-control noRadius", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.Label("Amount", new { @class = "control-label noRadius" })@Html.Label("($)")
+                    @Html.TextBoxFor(model => model.Amount, new { @onkeypress = "return isNumber(event)", @class = "form-control noRadius", @required = "required", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label noRadius" })
+                    @Html.TextArea("Description", "", new { @class = "form-control noRadius" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-group">
+                    @Html.Label("Old Description", new { @class = "control-label noRadius" })
+                    @Html.TextArea("OldDescription", Model.Description, new { @value = "", @class = "form-control noRadius", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.FileName))
+        {
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="form-group">
+                        @Html.Label("Documents")
+                        @Html.ActionLink(Model.FileName, "DownloadContractDocument", "Contract", new { fileName = Model.FileName }, null)
+                    </div>
+                </div>
+            </div>
+        }
+        <p>
+            <input type="submit" value="Save" class="btn btn-primary noRadius" />
+            <input type="button" value="Cancel" id="btnContractCancel" class="btn btn-default noRadius" />
+        </p>
+    </fieldset>
+}

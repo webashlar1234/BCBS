@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BCBS.Models
+{
+    public class AccuralReportModel
+    {
+        public string ProjectCode { get; set; }
+        public string CustomerType { get; set; }
+        public string ServiceName { get; set; }
+        public string Revenue { get; set; }
+        public string Expense { get; set; }
+        public string Estimate { get; set; }
+        public string FromDate { get; set; }
+        public string CustomerName { get; set; }
+    }
+
+    public class MonthYear
+    {
+        public string Month { get; set; }
+        public string Year { get; set; }
+    }
+}

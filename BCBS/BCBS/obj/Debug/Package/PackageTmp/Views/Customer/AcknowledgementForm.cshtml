@@ -1,0 +1,90 @@
+﻿@model BCBS.Models.AcknowledgementModel
+
+@{
+    ViewBag.Title = "AcknowledgementForm";
+}
+<link href="~/Content/kendo/2013.2.716/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2013.2.716/kendo.default.min.css" rel="stylesheet" />
+<link href="~/Content/BootStrap/css/datepicker.css" rel="stylesheet" />
+<script src="~/Scripts/kendo.all.min.js"></script>
+<script src="~/Scripts/Bootstrap/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/Bootstrap/bootstrap-multiselect.js"></script>
+<script src="~/Scripts/JS/AcknowledgementBilling.js"></script>
+<style type="text/css">
+    td, th {
+        padding: 5px 15px !important;
+    }
+</style>
+
+<fieldset>
+    <legend>Billing Acknowledgement Form</legend>
+    <form method="post" id="formack">
+        @Html.Hidden("RemovedProjects")
+        @Html.Hidden("RemovedServices")
+        <div class="row">
+            <div class="col-lg-3 customerddl">
+                <div class="form-group">
+                    @*@Html.DropDownList("Customer", new SelectList(ViewBag.Customers, "Id", "Name"), "--Select Customer--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+                    @Html.DropDownListFor(model => model.CustomerId, new SelectList(ViewBag.Customers, "Id", "Name"), "--Select Customer--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })
+
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <span class="btn btn-primary noRadius" id="deletecustomer" data-toggle="modal" data-target="#myModal">Add Project
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-8" id="ProjectService">
+            </div>
+        </div>
+        <input id="btnsubmit" type="submit" class="btn btn-primary" value="Save" style="display: none" />
+    </form>
+
+    <div class="modal fade noRadius" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content noRadius">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Project - Services</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="frommodal">
+                        <div class="row">
+                            <div class="col-lg-12 projectddl">
+                                <div class="form-group">
+                                    @Html.Label("Project", new { @class = "control-label noRadius" })
+                                    @Html.DropDownList("Project", new SelectList(ViewBag.Projects, "Id", "Name"), "--Select Project--", new { @class = "form-control noRadius", @required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 serviceddl">
+                                <div class="form-group">
+                                    @Html.Label("Service", new { @class = "control-label noRadius" })
+                                    @*@Html.DropDownList("Service", new SelectList(ViewBag.Services, "Id", "Name"), "--Select Service--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+                                    @Html.DropDownList("Service", Enumerable.Empty<SelectListItem>(), "--Select Service--", new { @class = "form-control noRadius", @required = "required" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 feestypeddl" style="display:none">
+                                <div class="form-group">
+                                    @Html.Label("FeesType", new { @class = "control-label noRadius" })
+                                    @*@Html.DropDownList("Service", new SelectList(ViewBag.Services, "Id", "Name"), "--Select Service--", new { @class = "form-control noRadius", @required = "required", @data_required = "true" })*@
+                                    @Html.DropDownList("FeesType", Enumerable.Empty<SelectListItem>(), new { @class = "form-control noRadius", @required = "required",@multiple = "multiple" })
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="" class="btn btn-default noRadius" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="btnAddProject" class="btn btn-primary noRadius">Add</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</fieldset>

@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+@{
+    string baseURL = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port);
+    string isunload = TempData["isunload"] as string;
+    string Error = TempData["Error"] as string;
+    string Message = TempData["Message"] as string;
+}
+<head>
+    <script>
+        var baseURL = '@baseURL';
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/BootStrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Common.css" rel="stylesheet" />
+    @*<script src="~/Scripts/jquery-2.1.4.js"></script>*@
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/Bootstrap/bootstrap.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/JS/Layout.js"></script>
+    <link href="~/Content/simple-sidebar.css" rel="stylesheet" />
+    <style>
+        .Margin {
+            margin-left: 10%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default noRadius" id="menutoggle">
+        @*<div class="navbar-header">
+            <a href="#menu-toggle" style="float:left" class="btn btn-default" id="menu-toggle">
+                <img src="http://material-design.storage.googleapis.com/images/hamburger.svg" />
+            </a>
+
+            <a style="float:left" class="navbar-brand" href="#">BCBS</a>
+        </div>*@
+        <div class="navbar-header">
+            <a href="#menu-toggle" class="navbar-brand btn btn-default pull-left" id="menu-toggle">
+                <img src="http://material-design.storage.googleapis.com/images/hamburger.svg" />
+
+            </a>
+            <a class="navbar-brand" href="#">BCBS</a>
+        </div>
+    </nav>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <div id="MainMenu" style="height: 100%;">
+                <div class="list-group panel">
+                    <!-- File Menu-->
+                    <a href="#" id="menuforms" class="list-group-item" data-toggle="" data-parent="">Forms</a>
+                    <div class="Margin">
+                        <div class="collapse" id="formsitems">
+                            <a href="~/customer/invoice" class="list-group-item menuSBF noRadius">Single Request Billing Form</a>
+                        </div>
+                    </div>
+                    <!-- File Menu-->
+                    <!-- Guide Menu-->
+                    <a href="#" id="menusetting" class="list-group-item" data-toggle="" data-parent="">Settings</a>
+                    <div class="Margin">
+                        <div class="collapse" id="settingitems">
+                            <a href="~/project/index" class="list-group-item menuProject noRadius">Projects</a>
+                            <a href="~/service/index" class="list-group-item menuServiceTypes noRadius">Service Types</a>
+                            <a href="~/customer/index" class="list-group-item menuCustomers noRadius">Customers</a>
+                            @*<a href="" class="list-group-item">Contracts</a>*@
+                        </div>
+                    </div>
+                    <!-- Guide Menu-->
+                    <!--Window Menu -->
+                    <a href="~/contract/index" class="list-group-item menuContract" data-parent="">Contracts</a>
+                    <div class="collapse" id="demo5">
+                    </div>
+                    <!--Window Menu -->
+                    <!--Reports Menu -->
+                    <a href="#" id="menureports" class="list-group-item" data-toggle="" data-parent="">Reports</a>
+                    <div class="Margin">
+                        <div class="collapse" id="reportsitem">
+                            <a href="~/reports/accuralworksheet" class="list-group-item menuAccuralWorksheet noRadius">Accural WorkSheet</a>
+                            <a href="~/reports/revenueexpense" class="list-group-item menuPRE noRadius">Revenue vs Expense</a>
+                        </div>
+                    </div>
+                    <!--Reports Menu -->
+                    <!--Activity Menu -->
+                    <a href="~/contract/activities" class="list-group-item menuActivity" data-parent="">Activity</a>
+                    <div class="collapse" id="activityItems">
+                    </div>
+                    <!--Activity Menu -->
+                    <!--About Menu -->
+                    <a href="#demo7" class="list-group-item" data-toggle="" data-parent="">About</a>
+                    <div class="collapse" id="demo7">
+                    </div>
+                    <!--About Menu -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="loader" id="LoaderMessage" style="display: none">
+            </div>
+            <div id="message">
+                @if ((!string.IsNullOrEmpty(Error)) || (!string.IsNullOrEmpty(Message)))
+                {
+
+                    if (!string.IsNullOrEmpty(Error))
+                    { <div class="alert alert-danger fade in noRadius">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!</strong>@Error
+                    </div>
+                    }
+                    else if (!string.IsNullOrEmpty(Message))
+                    { <div class="alert alert-success fade in noRadius">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Success!</strong>@Message
+                    </div>
+                    }
+                }
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+
+    @*<nav class="navbar navbar-default noRadius">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">BCBS Accounting System</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" class="txt-white">File</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle txt-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guide <span class="caret"></span></a>
+                        <ul class="dropdown-menu menu-expand noRadius">
+                            <li><a href="~/Project/Index" class="txt-white">Projects</a></li>
+                            <li><a href="#" class="txt-white">Service Types</a></li>
+                            <li><a href="#" class="txt-white">Customers</a></li>
+                            <li><a href="#" class="txt-white">Contracts</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="txt-white">Window</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle txt-white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>
+                        <ul class="dropdown-menu menu-expand noRadius">
+                            <li><a href="#" class="txt-white">Fees Report</a></li>
+                            <li><a href="#" class="txt-white">PlanConnexion Entry(Monthly expense by Category)</a></li>
+                            <li><a href="#" class="txt-white">PlanConnexion Entry (Table)</a></li>
+                            <li><a href="#" class="txt-white">PlanConnexion Entry (Chart)</a></li>
+                            <li><a href="#" class="txt-white">Project - Srevice Report</a></li>
+                            <li><a href="#" class="txt-white">Accural Worksheet</a></li>
+                            <li><a href="#" class="txt-white">Billing Report(Monthly)</a></li>
+                            <li><a href="#" class="txt-white">Summary Billing Reprot by Category</a></li>
+                            <li><a href="#" class="txt-white">Summary Billing Reprot by Plan (Table)</a></li>
+                            <li><a href="#" class="txt-white">Accural Worksheet -Plans vs Revenue vs Expenses(Chart)</a></li>
+                          </ul>
+                    </li>
+                    <li><a href="#" class="txt-white">About</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.container-fluid -->
+    </nav>*@
+
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">© Company 2014</p>
+        </div>
+    </footer>
+</body>
+</html>

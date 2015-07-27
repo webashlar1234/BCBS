@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    .lblSearchContent {
+        color: #1B39A8;
+    }
+
+    #btnprint {
+        cursor: pointer;
+        font-size: 20px !important;
+    }
+
+    #btncsv {
+        font-size: 20px !important;
+        cursor: pointer;
+    }
+</style>
+<link href="~/Content/kendo/2013.2.716/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2013.2.716/kendo.default.min.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/kendo.all.min.js"></script>
+<link href="~/Content/BootStrap/css/datepicker.css" rel="stylesheet" />
+<script src="~/Scripts/Bootstrap/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/kendo-grid-csv.js"></script>
+<script src="~/Scripts/FileSaver.js"></script>
+<script src="~/Scripts/JS/Accural.js"></script>
+@*<div id="message">
+    @if ((!string.IsNullOrEmpty(Error)) || (!string.IsNullOrEmpty(Message)))
+    {
+
+        if (!string.IsNullOrEmpty(Error))
+        { <div class="alert alert-danger fade in noRadius">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Error!</strong>@Error
+        </div>
+        }
+        else if (!string.IsNullOrEmpty(Message))
+        { <div class="alert alert-success fade in noRadius">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Success!</strong>@Message
+        </div>
+        }
+    }
+</div>*@
+@*<span class="btn btn-primary noRadius" id="addservice">Add New Service
+</span>
+<span class="btn btn-primary noRadius" id="editservice" style="display: none">Edit Service
+</span>*@
+@*<span class="btn btn-primary noRadius"  style="display: none">Delete Service
+</span>*@
+@*<span id="" style="display: none" class="btn btn-primary noRadius" data-toggle="modal" data-target="#exampleModal">Delete</span>*@
+@*<span class="btn btn-primary noRadius" id="deleteservice" data-toggle="modal" data-target="#myModal">Delete
+</span>*@
+@*<input type="text" class="form-control noRadius" id="txtSearch" />*@
+<form>
+    <div class="row" id="filterDiv">
+        <div class="col-lg-3">
+            <div class="form-group">
+                @Html.DropDownList("SearchBy", new List<SelectListItem>{
+                     new SelectListItem{ Text="Month - Year", Value = "MonthYear",Selected=true},
+                    //new SelectListItem{ Text="Year Only", Value = "ByMonthOnly" },
+                    //new SelectListItem{ Text="From - To (Month)", Value = "FromToMonth" },
+                    new SelectListItem{ Text="From - To (Date)", Value = "FromToDate" },
+                 }, "--Select Filter Type--", new { @class = "form-control noRadius" })
+            </div>
+        </div>
+        <div class="col-lg-3 month">
+            @Html.DropDownList("Month", new SelectList(ViewBag.Months, "value", "Text", ViewBag.currentMonth), "--Select Month--", new { @class = "form-control noRadius", @required = "required" })
+        </div>
+        <div class="col-lg-3 year">
+            @Html.DropDownList("Year", new SelectList(ViewBag.Years, "Year", "Year", ViewBag.currentyear), "--Select Year--", new { @class = "form-control noRadius", @required = "required" })
+        </div>
+        <div class="col-lg-3 fromdate" style="display: none">
+            @Html.TextBox("FromDate", null, new { @class = "form-control noRadius", @required = "required" })
+        </div>
+        <div class="col-lg-3 enddate" style="display: none">
+            @Html.TextBox("EndDate", null, new { @class = "form-control noRadius", @required = "required" })
+        </div>
+        <div class="col-lg-3">
+            <span class="btn btn-primary noRadius" id="btnSearch">Filter
+            </span>
+        </div>
+    </div>
+    <div class="row lblSearch">
+        <div class="col-lg-8">
+            @Html.Label("Showing results for :", new { @class = "control-label noRadius" }) <strong class="lblSearchContent">July 2015 to </strong>
+        </div>
+        <div class="col-lg-2">
+            @Html.DropDownList("ChartType", new List<SelectListItem>{
+                    new SelectListItem{ Text="Plan-Revenue-Expense", Value = "PlanWise" },
+                    new SelectListItem{ Text="Service-Revenue-Expense", Value = "ServiceWise" },
+                    new SelectListItem{ Text="Customer-Revenue-Expense", Value = "CustomerWise" }
+                 }, "--Select chart type--", new { @class = "noRadius" })
+            @*<i id="btnchart" class="glyphicon glyphicon-stats pull-right" title="Genrate Chart"></i>*@
+        </div>
+        <div class="col-lg-2">
+            <i id="btnprint" class="glyphicon glyphicon-print pull-right" title="Print"></i>
+            <i id="btncsv" class="glyphicon glyphicon-file pull-right" title="Export to Excel"></i>
+        </div>
+    </div>
+</form>
+<div class="modal fade noRadius" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content noRadius">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure want to delete this Service?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="" class="btn btn-default noRadius" data-dismiss="modal">No</button>
+                <button type="button" id="btnconfirmdelete" class="btn btn-primary noRadius">Yes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+ <div id="AccuralGrid" class="k-grid k-widget k-secondary gridDiv" data-role="grid"></div>
